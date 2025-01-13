@@ -34,6 +34,7 @@ const PlanForm = () => {
     useEffect(() => {
         if (userSelectedPlan) {
             setSelectedPlan(userSelectedPlan);
+
         }
 
     }, [userSelectedPlan]);
@@ -54,7 +55,7 @@ const PlanForm = () => {
             setErrMsg("Select one plan below");
             return;
         }
-        // console.log(selectedPlan);
+
         dispatch(updateUserPlan(selectedPlan));
         dispatch(nextStep());
     }
@@ -68,12 +69,12 @@ const PlanForm = () => {
 
     const handleToggle = () => {
         setSelectedPlan((prev) => {
-            const subsType = prev.subsType === "monthly" ? "yearly" : "monthly";
-            const planPrice = plans[subsType][prev.planName] || "";
+            const newSubsType = prev.subsType === "monthly" ? "yearly" : "monthly";
+            const newPlanPrice = plans[newSubsType][prev.planName] || "";
             return {
                 ...prev,
-                subsType,
-                planPrice
+                subsType: newSubsType,
+                planPrice: newPlanPrice,
             }
         }
         )
@@ -102,7 +103,7 @@ const PlanForm = () => {
                             {plan === "pro" && <Pro />}
 
                             <div className="plan-name-price-div">
-                                <span>{plan.charAt(0).toUpperCase() + plan.slice(1)}</span>
+                                <span style={{ color: "hsl(213, 96%, 18%)", fontWeight: "500" }}>{plan.charAt(0).toUpperCase() + plan.slice(1)}</span>
                                 <input
                                     type="radio"
                                     id={plan}
@@ -111,6 +112,7 @@ const PlanForm = () => {
                                     onChange={handleChange}
                                     className="hidden-radio" />
                                 <p>{plans[selectedPlan.subsType][plan]}</p>
+                                {selectedPlan.subsType === 'yearly' ? <p>2 months free</p> : ""}
                             </div>
                         </label>
                     ))}

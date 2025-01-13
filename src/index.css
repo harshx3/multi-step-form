@@ -400,7 +400,6 @@ hr {
 
 .tracker-field {
   position: relative;
-
 }
 
 .step-tracker {
@@ -460,4 +459,73 @@ ol {
   text-transform: uppercase;
   color: var(--white);
   font-weight: 500;
+}
+
+.step-tracker-mobile {
+  display: none;
+}
+
+
+/* mobile responsive */
+
+@media screen and (max-width: 900px) {
+  body {
+    background-image: url("../public/assets/bg-sidebar-mobile.svg");
+    background-repeat: no-repeat;
+    width: 100%;
+    background-size: contain;
+  }
+
+  .display-form {
+    width: 90%;
+    position: absolute;
+    top: 15%;
+    left: -40%;
+    transform: translate(50%);
+  }
+
+  .step-tracker {
+    display: none;
+  }
+
+  .step-tracker-mobile {
+    display: flex;
+    position: absolute;
+    top: -15%;
+    gap: 2rem;
+    transform: translate(20%, -50%);
+    color: var(--white);
+    text-align: center;
+
+  }
+
+  .mobile-step-number {
+    font-size: 1.7rem;
+    border: 1px solid var(--white);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+
+  .plan-package-div {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .make-radio {
+    flex-direction: row;
+    width: 100%;
+    justify-content: start;
+    gap: 1rem;
+  }
+
+  .thankyou-div {
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+  }
+
+  .current-step {
+    background: var(--light-blue);
+  }
+
 }
