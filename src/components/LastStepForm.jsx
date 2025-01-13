@@ -18,7 +18,7 @@ const LastStepForm = () => {
 
     const plan = useSelector((state) => state.step.userPlan);
     const addOns = useSelector((state) => state.step.userAddons);
-    console.log(addOns);
+
 
     const selectedAddOns = Object.entries(addOns)
         .filter(([_, addOn]) => addOn.selected)
